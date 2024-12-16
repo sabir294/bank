@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Overschrijvingen - ModernBank</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/transfers.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +31 (0)20 1234567</span>
+                    <span><i class="fas fa-envelope"></i> contact@modernbank.nl</span>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Uitloggen</a>
+                    <a href="#" class="btn-search"><i class="fas fa-search"></i></a>
+                    <select class="language-selector">
+                        <option value="nl">NL</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <a href="index.html" class="logo">ModernBank</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="accounts.html" class="nav-link">Rekeningen</a></li>
+                    <li><a href="transfers.html" class="nav-link active">Overschrijvingen</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Overschrijving</h1>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="transfer-container">
+                <!-- Transfer Form -->
+                <form id="transfer-form" class="transfer-form">
+                    <!-- From Account Section -->
+                    <div class="form-section">
+                        <h2>Van Rekening</h2>
+                        <div class="form-group">
+                            <label for="from-account">Selecteer rekening</label>
+                            <select id="from-account" class="form-control" required>
+                                <option value="NL91MBNK0123456789">Betaalrekening - €2.543,21</option>
+                                <option value="NL91MBNK0123456790">Spaarrekening - €15.750,00</option>
+                                <option value="NL91MBNK0123456791">Beleggingsrekening - €8.432,65</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- To Account Section -->
+                    <div class="form-section">
+                        <h2>Naar Rekening</h2>
+                        <div class="form-group">
+                            <label for="transfer-type">Type overschrijving</label>
+                            <div class="transfer-type-selector">
+                                <button type="button" class="transfer-type-btn active" data-type="own">
+                                    <i class="fas fa-exchange-alt"></i>
+                                    Eigen Rekeningen
+                                </button>
+                                <button type="button" class="transfer-type-btn" data-type="other">
+                                    <i class="fas fa-user"></i>
+                                    Andere Rekening
+                                </button>
+                                <button type="button" class="transfer-type-btn" data-type="contact">
+                                    <i class="fas fa-address-book"></i>
+                                    Contacten
+                                </button>
+                            </div>
+                        </div>
+
+                        <div id="own-account-section" class="transfer-section active">
+                            <div class="form-group">
+                                <label for="to-own-account">Selecteer rekening</label>
+                                <select id="to-own-account" class="form-control" required>
+                                    <option value="NL91MBNK0123456789">Betaalrekening</option>
+                                    <option value="NL91MBNK0123456790">Spaarrekening</option>
+                                    <option value="NL91MBNK0123456791">Beleggingsrekening</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="other-account-section" class="transfer-section">
+                            <div class="form-group">
+                                <label for="to-iban">IBAN</label>
+                                <input type="text" id="to-iban" class="form-control" placeholder="NL00 BANK 0000 0000 00">
+                            </div>
+                            <div class="form-group">
+                                <label for="to-name">Naam begunstigde</label>
+                                <input type="text" id="to-name" class="form-control" placeholder="Naam">
+                            </div>
+                        </div>
+
+                        <div id="contact-section" class="transfer-section">
+                            <div class="form-group">
+                                <label for="contact-select">Selecteer contact</label>
+                                <select id="contact-select" class="form-control">
+                                    <option value="">Kies een contact</option>
+                                    <option value="contact1">Jan Jansen - NL91 BANK 0123 4567 89</option>
+                                    <option value="contact2">Piet Peters - NL91 BANK 9876 5432 10</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amount Section -->
+                    <div class="form-section">
+                        <h2>Bedrag</h2>
+                        <div class="form-group">
+                            <label for="amount">Bedrag in euro's</label>
+                            <div class="amount-input">
+                                <span class="currency">€</span>
+                                <input type="number" id="amount" class="form-control" step="0.01" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description Section -->
+                    <div class="form-section">
+                        <h2>Omschrijving</h2>
+                        <div class="form-group">
+                            <label for="description">Omschrijving (optioneel)</label>
+                            <textarea id="description" class="form-control" rows="2" placeholder="Voeg een omschrijving toe"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Date Section -->
+                    <div class="form-section">
+                        <h2>Datum</h2>
+                        <div class="form-group">
+                            <div class="date-selector">
+                                <button type="button" class="date-type-btn active" data-type="now">Direct</button>
+                                <button type="button" class="date-type-btn" data-type="later">Later</button>
+                            </div>
+                            <div id="date-input" class="hidden">
+                                <input type="date" id="transfer-date" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Section -->
+                    <div class="form-section submit-section">
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <i class="fas fa-paper-plane"></i>
+                            Overschrijving Uitvoeren
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Recent Transfers -->
+                <div class="recent-transfers">
+                    <h2>Recente Overschrijvingen</h2>
+                    <div class="transfers-list">
+                        <div class="transfer-item">
+                            <div class="transfer-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </div>
+                            <div class="transfer-details">
+                                <div class="transfer-title">Naar: Jan Jansen</div>
+                                <div class="transfer-account">NL91 BANK 0123 4567 89</div>
+                                <div class="transfer-date">Vandaag, 14:30</div>
+                            </div>
+                            <div class="transfer-amount negative">-€45,23</div>
+                        </div>
+                        <div class="transfer-item">
+                            <div class="transfer-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="transfer-details">
+                                <div class="transfer-title">Naar Spaarrekening</div>
+                                <div class="transfer-account">NL91 MBNK 0123 4567 90</div>
+                                <div class="transfer-date">01-03-2024</div>
+                            </div>
+                            <div class="transfer-amount negative">-€500,00</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +31 (0)20 1234567</p>
+                    <p><i class="fas fa-envelope"></i> contact@modernbank.nl</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Amsterdam, Nederland</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Over ons</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Voorwaarden</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Volg ons</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ModernBank - Alle rechten voorbehouden</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/transfers.js"></script>
+</body>
+</html>
