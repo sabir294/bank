@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spaarrekeningen - ModernBank</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/savings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +31 (0)20 1234567</span>
+                    <span><i class="fas fa-envelope"></i> contact@modernbank.nl</span>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Uitloggen</a>
+                    <a href="#" class="btn-search"><i class="fas fa-search"></i></a>
+                    <select class="language-selector">
+                        <option value="nl">NL</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <a href="index.html" class="logo">ModernBank</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="nav-link">Rekeningen <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="checking.html">Betaalrekening</a>
+                            <a href="savings.html" class="active">Spaarrekening</a>
+                            <a href="investment.html">Beleggingsrekening</a>
+                        </div>
+                    </li>
+                    <li><a href="transfers.html" class="nav-link">Overschrijvingen</a></li>
+                    <li><a href="cards.html" class="nav-link">Betaalpassen</a></li>
+                    <li><a href="insurance.html" class="nav-link">Verzekeringen</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Spaarrekeningen</h1>
+                <div class="breadcrumbs">
+                    <a href="index.html">Home</a> &gt;
+                    <a href="accounts.html">Rekeningen</a> &gt;
+                    <span>Spaarrekening</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="savings-overview">
+                <!-- Spaarrekening Overzicht -->
+                <div class="account-summary">
+                    <div class="account-card">
+                        <div class="card-header">
+                            <h2>Spaarrekening</h2>
+                            <span class="account-number">NL91 MBNK 0123 4567 90</span>
+                        </div>
+                        <div class="balance-info">
+                            <div class="current-balance">
+                                <span class="label">Huidig Saldo</span>
+                                <span class="amount">€15.750,00</span>
+                            </div>
+                            <div class="interest-rate">
+                                <span class="label">Huidige Rente</span>
+                                <span class="rate">1,2% per jaar</span>
+                            </div>
+                        </div>
+                        <div class="quick-actions">
+                            <button class="btn btn-primary"><i class="fas fa-plus"></i> Geld Storten</button>
+                            <button class="btn btn-secondary"><i class="fas fa-exchange-alt"></i> Geld Opnemen</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spaaroverzicht -->
+                <div class="savings-stats">
+                    <h3>Spaaroverzicht</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-piggy-bank"></i></div>
+                            <div class="stat-info">
+                                <span class="label">Totaal Gespaard</span>
+                                <span class="value">€15.750,00</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-chart-line"></i></div>
+                            <div class="stat-info">
+                                <span class="label">Rente dit jaar</span>
+                                <span class="value">€189,00</span>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"><i class="fas fa-bullseye"></i></div>
+                            <div class="stat-info">
+                                <span class="label">Spaardoel</span>
+                                <span class="value">€20.000,00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spaargrafieken -->
+                <div class="savings-charts">
+                    <div class="chart-container">
+                        <h3>Spaarverloop</h3>
+                        <canvas id="savingsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>Spaardoel Voortgang</h3>
+                        <div class="goal-progress">
+                            <div class="progress-bar">
+                                <div class="progress" style="width: 78.75%"></div>
+                            </div>
+                            <div class="progress-info">
+                                <span>€15.750 van €20.000</span>
+                                <span>78.75% bereikt</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recente Transacties -->
+                <div class="recent-transactions">
+                    <h3>Recente Transacties</h3>
+                    <div class="transactions-list">
+                        <div class="transaction-item">
+                            <div class="transaction-icon deposit">
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <div class="transaction-title">Storting van Betaalrekening</div>
+                                <div class="transaction-date">1 maart 2024</div>
+                            </div>
+                            <div class="transaction-amount positive">+€500,00</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon interest">
+                                <i class="fas fa-percentage"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <div class="transaction-title">Rentebijschrijving</div>
+                                <div class="transaction-date">29 februari 2024</div>
+                            </div>
+                            <div class="transaction-amount positive">+€15,75</div>
+                        </div>
+                        <div class="transaction-item">
+                            <div class="transaction-icon withdrawal">
+                                <i class="fas fa-minus"></i>
+                            </div>
+                            <div class="transaction-details">
+                                <div class="transaction-title">Opname naar Betaalrekening</div>
+                                <div class="transaction-date">15 februari 2024</div>
+                            </div>
+                            <div class="transaction-amount negative">-€1.000,00</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-secondary view-all">Alle Transacties Bekijken</button>
+                </div>
+
+                <!-- Spaarproducten -->
+                <div class="savings-products">
+                    <h3>Andere Spaarproducten</h3>
+                    <div class="products-grid">
+                        <div class="product-card">
+                            <div class="product-icon"><i class="fas fa-lock"></i></div>
+                            <h4>Deposito Sparen</h4>
+                            <p>Vast rentepercentage voor een vaste periode</p>
+                            <div class="product-details">
+                                <span class="rate">1,8% rente</span>
+                                <span class="term">voor 2 jaar vast</span>
+                            </div>
+                            <button class="btn btn-outline">Meer Informatie</button>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-icon"><i class="fas fa-house"></i></div>
+                            <h4>Hypotheek Sparen</h4>
+                            <p>Spaar voor uw hypotheek met extra rente</p>
+                            <div class="product-details">
+                                <span class="rate">2,0% rente</span>
+                                <span class="term">gekoppeld aan hypotheek</span>
+                            </div>
+                            <button class="btn btn-outline">Meer Informatie</button>
+                        </div>
+                        <div class="product-card">
+                            <div class="product-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <h4>Studie Sparen</h4>
+                            <p>Start met sparen voor de studie van uw kind</p>
+                            <div class="product-details">
+                                <span class="rate">1,5% rente</span>
+                                <span class="term">flexibele looptijd</span>
+                            </div>
+                            <button class="btn btn-outline">Meer Informatie</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar met tips en hulp -->
+            <aside class="savings-sidebar">
+                <div class="help-section">
+                    <h3>Hulp nodig?</h3>
+                    <ul class="help-links">
+                        <li><a href="#"><i class="fas fa-calculator"></i> Spaarrekening Calculator</a></li>
+                        <li><a href="#"><i class="fas fa-question-circle"></i> Veelgestelde Vragen</a></li>
+                        <li><a href="#"><i class="fas fa-phone"></i> Contact Opnemen</a></li>
+                    </ul>
+                </div>
+                <div class="tips-section">
+                    <h3>Spaartips</h3>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <h4>Automatisch Sparen</h4>
+                        <p>Stel een automatische overboeking in om elke maand een vast bedrag te sparen.</p>
+                    </div>
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-chart-pie"></i></div>
+                        <h4>Verdeel uw Spaargeld</h4>
+                        <p>Spreid uw spaargeld over verschillende spaarproducten voor optimaal rendement.</p>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +31 (0)20 1234567</p>
+                    <p><i class="fas fa-envelope"></i> contact@modernbank.nl</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Amsterdam, Nederland</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Over ons</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Voorwaarden</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Volg ons</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ModernBank - Alle rechten voorbehouden</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/savings.js"></script>
+</body>
+</html>

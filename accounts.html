@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mijn Rekeningen - ModernBank</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/accounts.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div class="contact-info">
+                    <span><i class="fas fa-phone"></i> +31 (0)20 1234567</span>
+                    <span><i class="fas fa-envelope"></i> contact@modernbank.nl</span>
+                </div>
+                <div class="user-actions">
+                    <a href="login.html" class="btn-login"><i class="fas fa-user"></i> Uitloggen</a>
+                    <a href="#" class="btn-search"><i class="fas fa-search"></i></a>
+                    <select class="language-selector">
+                        <option value="nl">NL</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <nav class="main-nav">
+            <div class="container">
+                <a href="index.html" class="logo">ModernBank</a>
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="accounts.html" class="nav-link active">Rekeningen</a></li>
+                    <li><a href="transfers.html" class="nav-link">Overschrijvingen</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div class="page-header">
+            <div class="container">
+                <h1>Mijn Rekeningen</h1>
+                <div class="account-actions">
+                    <button class="btn btn-secondary"><i class="fas fa-plus"></i> Nieuwe Rekening</button>
+                    <button class="btn btn-secondary"><i class="fas fa-download"></i> Download Overzicht</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="accounts-grid">
+                <!-- Betaalrekening -->
+                <div class="account-card primary">
+                    <div class="account-type">Betaalrekening</div>
+                    <div class="account-number">NL91 MBNK 0123 4567 89</div>
+                    <div class="account-balance">
+                        <span class="balance-label">Saldo</span>
+                        <span class="balance-amount">€2.543,21</span>
+                    </div>
+                    <div class="account-details">
+                        <div class="detail-item">
+                            <span class="label">Rente</span>
+                            <span class="value">0,01%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Limiet</span>
+                            <span class="value">€1.000,00</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-exchange-alt"></i> Overschrijven</button>
+                        <button class="btn-action"><i class="fas fa-history"></i> Transacties</button>
+                        <button class="btn-action"><i class="fas fa-cog"></i> Instellingen</button>
+                    </div>
+                </div>
+
+                <!-- Spaarrekening -->
+                <div class="account-card savings">
+                    <div class="account-type">Spaarrekening</div>
+                    <div class="account-number">NL91 MBNK 0123 4567 90</div>
+                    <div class="account-balance">
+                        <span class="balance-label">Saldo</span>
+                        <span class="balance-amount">€15.750,00</span>
+                    </div>
+                    <div class="account-details">
+                        <div class="detail-item">
+                            <span class="label">Rente</span>
+                            <span class="value">1,2%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Laatste storting</span>
+                            <span class="value">01-03-2024</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-exchange-alt"></i> Overschrijven</button>
+                        <button class="btn-action"><i class="fas fa-history"></i> Transacties</button>
+                        <button class="btn-action"><i class="fas fa-cog"></i> Instellingen</button>
+                    </div>
+                </div>
+
+                <!-- Beleggingsrekening -->
+                <div class="account-card investment">
+                    <div class="account-type">Beleggingsrekening</div>
+                    <div class="account-number">NL91 MBNK 0123 4567 91</div>
+                    <div class="account-balance">
+                        <span class="balance-label">Portefeuille waarde</span>
+                        <span class="balance-amount">€8.432,65</span>
+                    </div>
+                    <div class="account-details">
+                        <div class="detail-item">
+                            <span class="label">Rendement YTD</span>
+                            <span class="value positive">+5,8%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Risicoprofiel</span>
+                            <span class="value">Neutraal</span>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-action"><i class="fas fa-chart-line"></i> Beleggen</button>
+                        <button class="btn-action"><i class="fas fa-history"></i> Transacties</button>
+                        <button class="btn-action"><i class="fas fa-cog"></i> Instellingen</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recente Transacties -->
+            <div class="recent-transactions">
+                <h2>Recente Transacties</h2>
+                <div class="transactions-list">
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-title">Albert Heijn</div>
+                            <div class="transaction-date">Vandaag, 14:30</div>
+                        </div>
+                        <div class="transaction-amount negative">-€45,23</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-title">Salaris Maart</div>
+                            <div class="transaction-date">01-03-2024</div>
+                        </div>
+                        <div class="transaction-amount positive">+€2.450,00</div>
+                    </div>
+                    <div class="transaction-item">
+                        <div class="transaction-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="transaction-details">
+                            <div class="transaction-title">Huur Maart</div>
+                            <div class="transaction-date">01-03-2024</div>
+                        </div>
+                        <div class="transaction-amount negative">-€1.200,00</div>
+                    </div>
+                </div>
+                <button class="btn btn-secondary view-all">Alle Transacties Bekijken</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> +31 (0)20 1234567</p>
+                    <p><i class="fas fa-envelope"></i> contact@modernbank.nl</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Amsterdam, Nederland</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul>
+                        <li><a href="#">Over ons</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Voorwaarden</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Volg ons</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ModernBank - Alle rechten voorbehouden</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/accounts.js"></script>
+</body>
+</html>
