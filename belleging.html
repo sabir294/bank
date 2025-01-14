@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Steen Papier Schaar Spel</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        select, input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            color: #ff4444;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Steen Papier Schaar</h1>
+        
+        <div id="saldo">Beschikbaar saldo: €1000.00</div>
+        
+        <div>
+            <label>Kies je wapen:</label>
+            <select id="keuze">
+                <option value="steen">Steen</option>
+                <option value="papier">Papier</option>
+                <option value="schaar">Schaar</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Inzet bedrag:</label>
+            <input type="number" id="inzet" min="1" max="1000" value="10">
+        </div>
+
+        <button onclick="speel()">Speel!</button>
+        
+        <div id="resultaat" class="result"></div>
+    </div>
+
+    <script>
+        let saldo = 1000;
+        
+        function speel() {
+            const keuze = document.getElementById('keuze').value;
+            const inzet = Number(document.getElementById('inzet').value);
+            
+            if (inzet > saldo) {
+                document.getElementById('resultaat').textContent = 'Je hebt niet genoeg saldo!';
+                return;
+            }
+            
+            const opties = ['steen', 'papier', 'schaar'];
+            const computer = opties[Math.floor(Math.random() * 3)];
+            
+            let resultaat;
+            if (keuze === computer) {
+                resultaat = 'Gelijkspel! Je krijgt je inzet terug.';
+            } else if (
+                (keuze === 'steen' && computer === 'schaar') ||
+                (keuze === 'papier' && computer === 'steen') ||
+                (keuze === 'schaar' && computer === 'papier')
+            ) {
+                saldo += inzet;
+                resultaat = `Je wint! Computer koos ${computer}. Je wint €${inzet}!`;
+            } else {
+                saldo -= inzet;
+                resultaat = `Je verliest! Computer koos ${computer}. Je verliest €${inzet}!`;
+            }
+            
+            document.getElementById('saldo').textContent = `Beschikbaar saldo: €${saldo.toFixed(2)}`;
+            document.getElementById('resultaat').textContent = resultaat;
+        }
+    </script>
+</body>
+</html>
