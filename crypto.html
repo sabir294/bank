@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <title>Cryptovaluta Overzicht</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #4CAF50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .crypto-item {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .crypto-item:hover {
+            background-color: #e9ecef;
+        }
+        .price-up {
+            animation: priceUp 1s;
+            color: #28a745;
+        }
+        .price-down {
+            animation: priceDown 1s;
+            color: #dc3545;
+        }
+        @keyframes priceUp {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        @keyframes priceDown {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        select, input, button {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            color: #666;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Cryptovaluta Overzicht</h1>
+        
+        <div id="portfolio"></div>
+        
+        <div>
+            <label>Kies een cryptovaluta:</label>
+            <select id="cryptoKeuze">
+                <option value="bitcoin">Bitcoin (€90000 per eenheid)</option>
+                <option value="ethereum">Ethereum (€4800 per eenheid)</option>
+                <option value="litecoin">Litecoin (€250 per eenheid)</option>
+            </select>
+        </div>
+
+        <div>
+            <label>Bedrag (in €):</label>
+            <input type="number" id="bedrag" min="1" value="100">
+        </div>
+
+        <button onclick="kopen()">Kopen</button>
+        <button onclick="verkopen()" style="background-color: #dc3545;">Verkopen</button>
+        
+        <div id="resultaat" class="result"></div>
+    </div>
+
+    <script>
+        let portfolio = {
+            bitcoin: { amount: 0, price: 90000 },
+            ethereum: { amount: 0, price: 4800 },
+            litecoin: { amount: 0, price: 250 }
+        };
+        let saldo = 1000;
+
+        function updatePortfolio() {
+            const portfolioDiv = document.getElementById('portfolio');
+            portfolioDiv.innerHTML = '';
+
+            for (const [crypto, data] of Object.entries(portfolio)) {
+                if (data.amount > 0) {
+                    const value = data.amount * data.price;
+                    const cryptoDiv = document.createElement('div');
+                    cryptoDiv.className = 'crypto-item';
+                    cryptoDiv.innerHTML = `
+                        ${crypto.charAt(0).toUpperCase() + crypto.slice(1)}: 
+                        ${data.amount.toFixed(8)} eenheden
+                        (€${value.toFixed(2)})
+                    `;
+                    portfolioDiv.appendChild(cryptoDiv);
+                }
+            }
+
+            // Simuleer prijsveranderingen
+            setInterval(() => {
+                for (const crypto in portfolio) {
+                    const change = (Math.random() - 0.5) * 0.02; // ±1% verandering
+                    const oldPrice = portfolio[crypto].price;
+                    portfolio[crypto].price *= (1 + change);
+                    
+                    if (portfolio[crypto].amount > 0) {
+                        const element = document.querySelector(`[data-crypto="${crypto}"]`);
+                        if (element) {
+                            element.classList.remove('price-up', 'price-down');
+                            element.classList.add(portfolio[crypto].price > oldPrice ? 'price-up' : 'price-down');
+                        }
+                    }
+                }
+                updatePortfolio();
+            }, 5000);
+        }
+
+        function kopen() {
+            const crypto = document.getElementById('cryptoKeuze').value;
+            const bedrag = Number(document.getElementById('bedrag').value);
+            
+            if (bedrag > saldo) {
+                document.getElementById('resultaat').textContent = 'Je hebt niet genoeg saldo!';
+                return;
+            }
+
+            const aantalEenheden = bedrag / portfolio[crypto].price;
+            portfolio[crypto].amount += aantalEenheden;
+            saldo -= bedrag;
+
+            updatePortfolio();
+            document.getElementById('resultaat').textContent = 
+                `Je hebt €${bedrag.toFixed(2)} in ${crypto} geïnvesteerd.`;
+        }
+
+        function verkopen() {
+            const crypto = document.getElementById('cryptoKeuze').value;
+            const bedrag = Number(document.getElementById('bedrag').value);
+            
+            const aantalEenheden = bedrag / portfolio[crypto].price;
+            if (aantalEenheden > portfolio[crypto].amount) {
+                document.getElementById('resultaat').textContent = 
+                    'Je hebt niet genoeg eenheden om te verkopen!';
+                return;
+            }
+
+            portfolio[crypto].amount -= aantalEenheden;
+            saldo += bedrag;
+
+            updatePortfolio();
+            document.getElementById('resultaat').textContent = 
+                `Je hebt voor €${bedrag.toFixed(2)} aan ${crypto} verkocht.`;
+        }
+
+        // Initialize
+        updatePortfolio();
+    </script>
+</body>
+</html>
